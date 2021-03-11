@@ -32,6 +32,7 @@ namespace study_winform_graphics
 			this.btn_changeScheduling = new System.Windows.Forms.Button();
 			this.btn_changeSchedule = new System.Windows.Forms.Button();
 			this.titleBox = new System.Windows.Forms.TextBox();
+			this.userView = new System.Windows.Forms.Panel();
 			this.SuspendLayout();
 			// 
 			// btn_changeScheduling
@@ -44,6 +45,7 @@ namespace study_winform_graphics
 			this.btn_changeScheduling.TabIndex = 0;
 			this.btn_changeScheduling.Text = "스케줄 생성";
 			this.btn_changeScheduling.UseVisualStyleBackColor = false;
+			this.btn_changeScheduling.Click += new System.EventHandler(this.componentChange);
 			// 
 			// btn_changeSchedule
 			// 
@@ -55,6 +57,7 @@ namespace study_winform_graphics
 			this.btn_changeSchedule.TabIndex = 1;
 			this.btn_changeSchedule.Text = "스케줄 확인";
 			this.btn_changeSchedule.UseVisualStyleBackColor = false;
+			this.btn_changeSchedule.Click += new System.EventHandler(this.componentChange);
 			// 
 			// titleBox
 			// 
@@ -66,11 +69,19 @@ namespace study_winform_graphics
 			this.titleBox.TabIndex = 2;
 			this.titleBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
+			// userView
+			// 
+			this.userView.Location = new System.Drawing.Point(12, 87);
+			this.userView.Name = "userView";
+			this.userView.Size = new System.Drawing.Size(776, 351);
+			this.userView.TabIndex = 3;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.userView);
 			this.Controls.Add(this.titleBox);
 			this.Controls.Add(this.btn_changeSchedule);
 			this.Controls.Add(this.btn_changeScheduling);
@@ -87,6 +98,7 @@ namespace study_winform_graphics
 		private System.Windows.Forms.Button btn_changeScheduling;
 		private System.Windows.Forms.Button btn_changeSchedule;
 		private System.Windows.Forms.TextBox titleBox;
+		private System.Windows.Forms.Panel userView;
 	}
 }
 
