@@ -33,6 +33,7 @@ namespace study_winform_graphics
 			this.btn_changeSchedule = new System.Windows.Forms.Button();
 			this.titleBox = new System.Windows.Forms.TextBox();
 			this.userView = new System.Windows.Forms.Panel();
+			this.btn_changeTableLayout = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btn_changeScheduling
@@ -71,16 +72,29 @@ namespace study_winform_graphics
 			// 
 			// userView
 			// 
-			this.userView.Location = new System.Drawing.Point(12, 87);
+			this.userView.Location = new System.Drawing.Point(12, 173);
 			this.userView.Name = "userView";
 			this.userView.Size = new System.Drawing.Size(776, 351);
 			this.userView.TabIndex = 3;
+			// 
+			// btn_changeTableLayout
+			// 
+			this.btn_changeTableLayout.BackColor = System.Drawing.SystemColors.ButtonFace;
+			this.btn_changeTableLayout.Font = new System.Drawing.Font("배달의민족 주아", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			this.btn_changeTableLayout.Location = new System.Drawing.Point(12, 87);
+			this.btn_changeTableLayout.Name = "btn_changeTableLayout";
+			this.btn_changeTableLayout.Size = new System.Drawing.Size(213, 69);
+			this.btn_changeTableLayout.TabIndex = 4;
+			this.btn_changeTableLayout.Text = "레이아웃 공부";
+			this.btn_changeTableLayout.UseVisualStyleBackColor = false;
+			this.btn_changeTableLayout.Click += new System.EventHandler(this.componentChange);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(797, 536);
+			this.Controls.Add(this.btn_changeTableLayout);
 			this.Controls.Add(this.userView);
 			this.Controls.Add(this.titleBox);
 			this.Controls.Add(this.btn_changeSchedule);
@@ -99,6 +113,7 @@ namespace study_winform_graphics
 		private System.Windows.Forms.Button btn_changeSchedule;
 		private System.Windows.Forms.TextBox titleBox;
 		private System.Windows.Forms.Panel userView;
+		private System.Windows.Forms.Button btn_changeTableLayout;
 	}
 }
 

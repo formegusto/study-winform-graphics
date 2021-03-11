@@ -15,6 +15,7 @@ namespace study_winform_graphics
 	{
 		private ScheduleComponent schduleComponent;
 		private SchedulingComponent schedulingComponent;
+		private TableLayoutComponent tableLayoutComponent;
 
 		public Form1()
 		{
@@ -22,6 +23,7 @@ namespace study_winform_graphics
 
 			this.schduleComponent = new ScheduleComponent();
 			this.schedulingComponent = new SchedulingComponent();
+			this.tableLayoutComponent = new TableLayoutComponent();
 
 			userView.Controls.Add(this.schedulingComponent);
 		}
@@ -46,6 +48,10 @@ namespace study_winform_graphics
 				case "btn_changeScheduling":
 					userView.Controls.Clear();
 					userView.Controls.Add(this.schedulingComponent);
+					break;
+				case "btn_changeTableLayout":
+					userView.Controls.Clear();
+					userView.Controls.Add(this.tableLayoutComponent);
 					break;
 			}
 		}

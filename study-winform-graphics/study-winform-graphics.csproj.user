@@ -10,5 +10,11 @@
     <Compile Update="view\SchedulingComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="view\TableLayoutComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="view\tableView\tableOne.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
