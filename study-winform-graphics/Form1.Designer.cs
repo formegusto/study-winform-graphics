@@ -29,13 +29,64 @@ namespace study_winform_graphics
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			this.btn_changeScheduling = new System.Windows.Forms.Button();
+			this.btn_changeSchedule = new System.Windows.Forms.Button();
+			this.titleBox = new System.Windows.Forms.TextBox();
+			this.SuspendLayout();
+			// 
+			// btn_changeScheduling
+			// 
+			this.btn_changeScheduling.BackColor = System.Drawing.SystemColors.ButtonFace;
+			this.btn_changeScheduling.Font = new System.Drawing.Font("배달의민족 주아", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			this.btn_changeScheduling.Location = new System.Drawing.Point(12, 12);
+			this.btn_changeScheduling.Name = "btn_changeScheduling";
+			this.btn_changeScheduling.Size = new System.Drawing.Size(213, 69);
+			this.btn_changeScheduling.TabIndex = 0;
+			this.btn_changeScheduling.Text = "스케줄 생성";
+			this.btn_changeScheduling.UseVisualStyleBackColor = false;
+			// 
+			// btn_changeSchedule
+			// 
+			this.btn_changeSchedule.BackColor = System.Drawing.SystemColors.ButtonFace;
+			this.btn_changeSchedule.Font = new System.Drawing.Font("배달의민족 주아", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			this.btn_changeSchedule.Location = new System.Drawing.Point(231, 12);
+			this.btn_changeSchedule.Name = "btn_changeSchedule";
+			this.btn_changeSchedule.Size = new System.Drawing.Size(213, 69);
+			this.btn_changeSchedule.TabIndex = 1;
+			this.btn_changeSchedule.Text = "스케줄 확인";
+			this.btn_changeSchedule.UseVisualStyleBackColor = false;
+			// 
+			// titleBox
+			// 
+			this.titleBox.Font = new System.Drawing.Font("배달의민족 도현", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.titleBox.Location = new System.Drawing.Point(450, 12);
+			this.titleBox.Multiline = true;
+			this.titleBox.Name = "titleBox";
+			this.titleBox.Size = new System.Drawing.Size(338, 69);
+			this.titleBox.TabIndex = 2;
+			this.titleBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			// 
+			// Form1
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.titleBox);
+			this.Controls.Add(this.btn_changeSchedule);
+			this.Controls.Add(this.btn_changeScheduling);
+			this.Name = "Form1";
 			this.Text = "Form1";
+			this.Load += new System.EventHandler(this.Form1_Load);
+			this.ResumeLayout(false);
+			this.PerformLayout();
+
 		}
 
 		#endregion
+
+		private System.Windows.Forms.Button btn_changeScheduling;
+		private System.Windows.Forms.Button btn_changeSchedule;
+		private System.Windows.Forms.TextBox titleBox;
 	}
 }
 

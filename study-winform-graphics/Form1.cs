@@ -17,5 +17,10 @@ namespace study_winform_graphics
 			InitializeComponent();
 		}
 
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			String title = "안녕하세요.\r\n태헌의 스터디룸 입니다.";
+			titleBox.Text = title;
+		}
 	}
 }
