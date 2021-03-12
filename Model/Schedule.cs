@@ -8,12 +8,12 @@ namespace study_winform_graphics.Model
 {
 	class Schedule
 	{
-		string furnace { get; set; }
-		string lot { get; set; }
-		DateTime startTime { get; set; }
-		DateTime endTime { get; set; }
-		int workVolume { get; set; }
-		int restVolume { get; set; }
+		public string furnace { get; set; }
+		public string lot { get; set; }
+		public DateTime startTime { get; set; }
+		public DateTime endTime { get; set; }
+		public int workVolume { get; set; }
+		public int restVolume { get; set; }
 
 		Schedule() { }
 

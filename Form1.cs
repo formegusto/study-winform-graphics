@@ -58,14 +58,24 @@ namespace study_winform_graphics
 				string[] cols = lines[l].Split(','); 
 
 				Console.WriteLine(lines[l]);
-
-				scheduleList.Add(new Schedule(cols));
+				
+				// 첫 시작
+				if(l == 1 || scheduleList[scheduleList.Count - 1].furnace != cols[0] || scheduleList[scheduleList.Count - 1].lot != cols[1])
+				{
+					scheduleList.Add(new Schedule(cols));
+				} else
+				{
+					scheduleList[scheduleList.Count - 1].endTime = DateTime.Parse(cols[3]);
+				}
 			}
 
-			for(int s = 0;s < scheduleList.Count; s++)
-			{
-				scheduleList[s].toString();
-			}
+			/*
+				for(int s = 0; s < scheduleList.Count; s++)
+				{
+					scheduleList[s].toString();
+					Thread.Sleep(1000);
+				}
+			*/
 		}
 	}
 }
