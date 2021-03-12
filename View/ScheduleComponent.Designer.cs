@@ -28,10 +28,30 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			components = new System.ComponentModel.Container();
+			this.ScheduleCanvas = new System.Windows.Forms.Panel();
+			this.SuspendLayout();
+			// 
+			// ScheduleCanvas
+			// 
+			this.ScheduleCanvas.Location = new System.Drawing.Point(0, 0);
+			this.ScheduleCanvas.Name = "ScheduleCanvas";
+			this.ScheduleCanvas.Size = new System.Drawing.Size(200, 100);
+			this.ScheduleCanvas.TabIndex = 0;
+			// 
+			// ScheduleComponent
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AutoScroll = true;
+			this.Controls.Add(this.ScheduleCanvas);
+			this.Name = "ScheduleComponent";
+			this.Size = new System.Drawing.Size(150, 133);
+			this.ResumeLayout(false);
+
 		}
 
 		#endregion
+
+		private System.Windows.Forms.Panel ScheduleCanvas;
 	}
 }

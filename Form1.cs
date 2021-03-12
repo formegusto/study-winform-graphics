@@ -69,6 +69,8 @@ namespace study_winform_graphics
 				}
 			}
 
+			this.scheduleComponent.drawSchedule(scheduleList.ToArray());
+
 			/*
 				for(int s = 0; s < scheduleList.Count; s++)
 				{
