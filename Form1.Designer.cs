@@ -28,13 +28,51 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			this.FileLoadBtn = new System.Windows.Forms.Button();
+			this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
+			this.SuspendLayout();
+			// 
+			// FileLoadBtn
+			// 
+			this.FileLoadBtn.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.FileLoadBtn.Location = new System.Drawing.Point(1077, 12);
+			this.FileLoadBtn.Name = "FileLoadBtn";
+			this.FileLoadBtn.Size = new System.Drawing.Size(207, 60);
+			this.FileLoadBtn.TabIndex = 0;
+			this.FileLoadBtn.Text = "ScheduleLoad";
+			this.FileLoadBtn.UseVisualStyleBackColor = true;
+			// 
+			// MainTableLayout
+			// 
+			this.MainTableLayout.ColumnCount = 2;
+			this.MainTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.309726F));
+			this.MainTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 91.69028F));
+			this.MainTableLayout.Location = new System.Drawing.Point(12, 12);
+			this.MainTableLayout.Name = "MainTableLayout";
+			this.MainTableLayout.RowCount = 3;
+			this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.892087F));
+			this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.467626F));
+			this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.64029F));
+			this.MainTableLayout.Size = new System.Drawing.Size(1059, 695);
+			this.MainTableLayout.TabIndex = 1;
+			// 
+			// Form1
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(1296, 719);
+			this.Controls.Add(this.MainTableLayout);
+			this.Controls.Add(this.FileLoadBtn);
+			this.Name = "Form1";
 			this.Text = "Form1";
+			this.ResumeLayout(false);
+
 		}
 
 		#endregion
+
+		private System.Windows.Forms.Button FileLoadBtn;
+		private System.Windows.Forms.TableLayoutPanel MainTableLayout;
 	}
 }
 
