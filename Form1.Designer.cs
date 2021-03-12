@@ -41,6 +41,7 @@
 			this.FileLoadBtn.TabIndex = 0;
 			this.FileLoadBtn.Text = "ScheduleLoad";
 			this.FileLoadBtn.UseVisualStyleBackColor = true;
+			this.FileLoadBtn.Click += new System.EventHandler(this.FileLoadAction);
 			// 
 			// MainTableLayout
 			// 

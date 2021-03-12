@@ -6,8 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using study_winform_graphics.View;
+using study_winform_graphics.Model;
+using System.Threading;
 
 namespace study_winform_graphics
 {
@@ -32,6 +35,37 @@ namespace study_winform_graphics
 			MainTableLayout.SetRowSpan(this.dateComponent, 2);
 
 			MainTableLayout.Controls.Add(this.scheduleComponent, 1, 2);
+		}
+
+		private void FileLoadAction(Object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog()
+			{
+				Filter = "(*.csv)|*.csv",
+			};
+
+			if (ofd.ShowDialog() != DialogResult.OK)
+				return;
+
+			Console.WriteLine("파일 path");
+			Console.WriteLine(ofd.FileName);
+
+			string[] lines = File.ReadAllLines(ofd.FileName);
+			List<Schedule> scheduleList = new List<Schedule>();
+
+			for(int l = 1; l < lines.Length; l++)
+			{
+				string[] cols = lines[l].Split(','); 
+
+				Console.WriteLine(lines[l]);
+
+				scheduleList.Add(new Schedule(cols));
+			}
+
+			for(int s = 0;s < scheduleList.Count; s++)
+			{
+				scheduleList[s].toString();
+			}
 		}
 	}
 }
