@@ -11,11 +11,15 @@ namespace mvc_pattern.Controller
 {
 	class SchedulingController
 	{
+		public SchedulingView view;
 		public SchedulingModel model;
 		SchedulingService service;
 
 		public SchedulingController()
 		{
+			this.view = new SchedulingView() {
+				controller = this
+			};
 			this.model = new SchedulingModel();
 			this.service = new SchedulingServiceImpl();
 		}
@@ -23,6 +27,7 @@ namespace mvc_pattern.Controller
 		public void setDataFromExcel(string path)
 		{
 			this.model = this.service.getModelFromExcel(path);
+			this.view.setListView();
 		}
 	}
 }
