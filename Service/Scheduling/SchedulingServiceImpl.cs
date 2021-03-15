@@ -47,10 +47,28 @@ namespace mvc_pattern.Service.Scheduling
 
 						// 제품 정보
 						case 2:
+							for (int r = 3; r <= range.Rows.Count; r++)
+							{
+								if (range.Cells[r, 1] == null)
+									continue;
+								List<string> productStrList = new List<string>();
+								for (int c = 1; c <= range.Columns.Count; c++)
+									productStrList.Add(range.Cells[r, c].Value2);
+								rtnModel.products.Add(new Product(productStrList.ToArray()));
+							}
 							break;
 
 						// 주문 정보
 						case 3:
+							for (int r = 3; r <= range.Rows.Count; r++)
+							{
+								if (range.Cells[r, 1] == null)
+									continue;
+								List<string> orderStrList = new List<string>();
+								for (int c = 1; c <= range.Columns.Count; c++)
+									orderStrList.Add(range.Cells[r, c].Value2);
+								rtnModel.orders.Add(new Order(orderStrList.ToArray()));
+							}
 							break;
 					}
 				}

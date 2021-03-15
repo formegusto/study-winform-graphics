@@ -49,13 +49,16 @@ namespace mvc_pattern.View
 			string[] productsHeader = new string[] { "제품명", "원재료", "소모용량(kg)", "생산시간", "불량률(%)" };
 			foreach (string product in productsHeader)
 				ProductsView.Columns.Add(new ColumnHeader() { Text = product, Width = 100 });
+			foreach (Product product in this.controller.model.products)
+				ProductsView.Items.Add(new ListViewItem(product.toStringArray()));
+
 
 			OrdersView.Columns.Clear();
 			string[] orderHeader = new string[] { "제품명", "주문수량", "주문일자", "납기일자" };
 			foreach (string order in orderHeader)
 				OrdersView.Columns.Add(new ColumnHeader() { Text = order, Width = 100 });
-
-
+			foreach (Order order in this.controller.model.orders)
+				OrdersView.Items.Add(new ListViewItem(order.toStringArray()));
 		}
 	}
 }
