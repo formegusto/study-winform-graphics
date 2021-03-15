@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using mvc_pattern.View;
+using mvc_pattern.Controller;
 
 namespace mvc_pattern
 {
@@ -19,7 +19,7 @@ namespace mvc_pattern
 
 			AutoSize = true;
 
-			UserView.Controls.Add(new SchedulingView());
+			UserView.Controls.Add(new SchedulingController().view);
 		}
 	}
 }

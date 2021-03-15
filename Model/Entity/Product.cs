@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mvc_pattern.Model
+namespace mvc_pattern.Model.Entity
 {
 	class Product
 	{

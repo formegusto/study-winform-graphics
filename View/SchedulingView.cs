@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
-using Excel = Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
+using mvc_pattern.Controller;
 
 namespace mvc_pattern.View
 {
 	public partial class SchedulingView : UserControl
 	{
+		public SchedulingController controller;
+
 		public SchedulingView()
 		{
 			InitializeComponent();
@@ -24,45 +25,13 @@ namespace mvc_pattern.View
 		{
 			OpenFileDialog ofd = new OpenFileDialog()
 			{
-				Filter = "(*.csv)|*.csv",
+				Filter = "(*.xlsx)|*.xlsx",
 			};
 
 			if (ofd.ShowDialog() != DialogResult.OK)
 				return;
 
-			Excel.Application excelApp = null;
-			Excel.Workbook workbook = null;
-			Excel.Worksheet worksheet = null;
-			Excel.Range range = null;
-
-			try
-			{
-				workbook.Close(true);
-				excelApp.Quit();
-			} finally
-			{
-				void ReleaseObject(object obj)
-				{
-					try
-					{
-						if(obj != null)
-						{
-							Marshal.ReleaseComObject(obj);
-							obj = null;
-						}
-					} catch(Exception ex)
-					{
-						obj = null;
-						throw ex;
-					} finally
-					{
-						GC.Collect();
-					}
-				}
-				ReleaseObject(worksheet);
-				ReleaseObject(workbook);
-				ReleaseObject(excelApp);
-			}
+			this.controller.setDataFromExcel(ofd.FileName);
 		}
 	}
 }
