@@ -28,13 +28,31 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
+			this.UserView = new System.Windows.Forms.Panel();
+			this.SuspendLayout();
+			// 
+			// UserView
+			// 
+			this.UserView.Location = new System.Drawing.Point(12, 62);
+			this.UserView.Name = "UserView";
+			this.UserView.Size = new System.Drawing.Size(960, 677);
+			this.UserView.TabIndex = 0;
+			// 
+			// Form1
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(984, 761);
+			this.Controls.Add(this.UserView);
+			this.Name = "Form1";
 			this.Text = "Form1";
+			this.ResumeLayout(false);
+
 		}
 
 		#endregion
+
+		private System.Windows.Forms.Panel UserView;
 	}
 }
 

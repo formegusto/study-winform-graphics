@@ -1,25 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using mvc_pattern.View;
 
-namespace mvc_pattern
+namespace mvc_pattern.View
 {
-	public partial class Form1 : Form
+	public partial class SchedulingView : UserControl
 	{
-		public Form1()
+		public SchedulingView()
 		{
 			InitializeComponent();
-
-			AutoSize = true;
-
-			UserView.Controls.Add(new SchedulingView());
 		}
 	}
 }
