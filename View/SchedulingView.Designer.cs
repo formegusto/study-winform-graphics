@@ -29,9 +29,9 @@
 		private void InitializeComponent()
 		{
 			this.TitleLabel = new System.Windows.Forms.Label();
-			this.listView1 = new System.Windows.Forms.ListView();
-			this.listView2 = new System.Windows.Forms.ListView();
-			this.listView3 = new System.Windows.Forms.ListView();
+			this.FurnacesView = new System.Windows.Forms.ListView();
+			this.ProductsView = new System.Windows.Forms.ListView();
+			this.OrdersView = new System.Windows.Forms.ListView();
 			this.ExcelLoadButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
@@ -45,32 +45,35 @@
 			this.TitleLabel.TabIndex = 0;
 			this.TitleLabel.Text = "스케줄링 View";
 			// 
-			// listView1
+			// FurnacesView
 			// 
-			this.listView1.HideSelection = false;
-			this.listView1.Location = new System.Drawing.Point(22, 49);
-			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(890, 150);
-			this.listView1.TabIndex = 1;
-			this.listView1.UseCompatibleStateImageBehavior = false;
+			this.FurnacesView.HideSelection = false;
+			this.FurnacesView.Location = new System.Drawing.Point(22, 49);
+			this.FurnacesView.Name = "FurnacesView";
+			this.FurnacesView.Size = new System.Drawing.Size(890, 150);
+			this.FurnacesView.TabIndex = 1;
+			this.FurnacesView.UseCompatibleStateImageBehavior = false;
+			this.FurnacesView.View = System.Windows.Forms.View.Details;
 			// 
-			// listView2
+			// ProductsView
 			// 
-			this.listView2.HideSelection = false;
-			this.listView2.Location = new System.Drawing.Point(22, 216);
-			this.listView2.Name = "listView2";
-			this.listView2.Size = new System.Drawing.Size(890, 150);
-			this.listView2.TabIndex = 2;
-			this.listView2.UseCompatibleStateImageBehavior = false;
+			this.ProductsView.HideSelection = false;
+			this.ProductsView.Location = new System.Drawing.Point(22, 216);
+			this.ProductsView.Name = "ProductsView";
+			this.ProductsView.Size = new System.Drawing.Size(890, 150);
+			this.ProductsView.TabIndex = 2;
+			this.ProductsView.UseCompatibleStateImageBehavior = false;
+			this.ProductsView.View = System.Windows.Forms.View.Details;
 			// 
-			// listView3
+			// OrdersView
 			// 
-			this.listView3.HideSelection = false;
-			this.listView3.Location = new System.Drawing.Point(20, 384);
-			this.listView3.Name = "listView3";
-			this.listView3.Size = new System.Drawing.Size(890, 150);
-			this.listView3.TabIndex = 3;
-			this.listView3.UseCompatibleStateImageBehavior = false;
+			this.OrdersView.HideSelection = false;
+			this.OrdersView.Location = new System.Drawing.Point(20, 384);
+			this.OrdersView.Name = "OrdersView";
+			this.OrdersView.Size = new System.Drawing.Size(890, 150);
+			this.OrdersView.TabIndex = 3;
+			this.OrdersView.UseCompatibleStateImageBehavior = false;
+			this.OrdersView.View = System.Windows.Forms.View.Details;
 			// 
 			// ExcelLoadButton
 			// 
@@ -91,9 +94,9 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.ExcelLoadButton);
-			this.Controls.Add(this.listView3);
-			this.Controls.Add(this.listView2);
-			this.Controls.Add(this.listView1);
+			this.Controls.Add(this.OrdersView);
+			this.Controls.Add(this.ProductsView);
+			this.Controls.Add(this.FurnacesView);
 			this.Controls.Add(this.TitleLabel);
 			this.Name = "SchedulingView";
 			this.Size = new System.Drawing.Size(940, 567);
@@ -105,9 +108,9 @@
 		#endregion
 
 		private System.Windows.Forms.Label TitleLabel;
-		private System.Windows.Forms.ListView listView1;
-		private System.Windows.Forms.ListView listView2;
-		private System.Windows.Forms.ListView listView3;
+		private System.Windows.Forms.ListView FurnacesView;
+		private System.Windows.Forms.ListView ProductsView;
+		private System.Windows.Forms.ListView OrdersView;
 		private System.Windows.Forms.Button ExcelLoadButton;
 	}
 }

@@ -5,14 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using mvc_pattern.Model;
 using mvc_pattern.Model.Entity;
 
 namespace mvc_pattern.Service.Scheduling
 {
-	public class SchedulingServiceImpl : SchedulingService
+	class SchedulingServiceImpl : SchedulingService
 	{
-		public void setDataFromExcel(string path)
+		public SchedulingModel getModelFromExcel(string path)
 		{
+			SchedulingModel rtnModel = new SchedulingModel();
+
 			Excel.Application excelApp = null;
 			Excel.Workbook workbook = null;
 			Excel.Worksheet worksheet = null;
@@ -22,6 +25,35 @@ namespace mvc_pattern.Service.Scheduling
 			{
 				excelApp = new Excel.Application();
 				workbook = excelApp.Workbooks.Open(path);
+					
+				for(int s = 1; s <= workbook.Worksheets.Count; s++)
+				{
+					worksheet = workbook.Worksheets.get_Item(s) as Excel.Worksheet;
+					range = worksheet.UsedRange;
+					switch(s)
+					{
+						// 설비 정보
+						case 1:
+							for(int r = 3; r <= range.Rows.Count; r++)
+							{
+								if (range.Cells[r, 1] == null)
+									continue;
+								List<string> furnaceStrList = new List<string>();
+								for(int c = 1; c <= range.Columns.Count; c++)
+									furnaceStrList.Add(range.Cells[r, c].Value2);
+								rtnModel.furnaces.Add(new Furnace(furnaceStrList.ToArray()));
+							}
+							break;
+
+						// 제품 정보
+						case 2:
+							break;
+
+						// 주문 정보
+						case 3:
+							break;
+					}
+				}
 
 				workbook.Close(true);
 				excelApp.Quit();
@@ -52,6 +84,8 @@ namespace mvc_pattern.Service.Scheduling
 				ReleaseObject(workbook);
 				ReleaseObject(excelApp);
 			}
+
+			return rtnModel;
 		}
 	}
 }

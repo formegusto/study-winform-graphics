@@ -9,25 +9,20 @@ using mvc_pattern.Service.Scheduling;
 
 namespace mvc_pattern.Controller
 {
-	public class SchedulingController
+	class SchedulingController
 	{
-		public SchedulingView view;
 		public SchedulingModel model;
-		public SchedulingService service;
+		SchedulingService service;
 
 		public SchedulingController()
 		{
-			this.view = new SchedulingView()
-			{
-				controller = this
-			};
 			this.model = new SchedulingModel();
 			this.service = new SchedulingServiceImpl();
 		}
 
 		public void setDataFromExcel(string path)
 		{
-			this.service.setDataFromExcel(path);
+			this.model = this.service.getModelFromExcel(path);
 		}
 	}
 }

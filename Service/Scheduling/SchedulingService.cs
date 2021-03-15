@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mvc_pattern.Model;
 
 namespace mvc_pattern.Service.Scheduling
 {
-	public interface SchedulingService
+	interface SchedulingService
 	{
-		void setDataFromExcel(string path);
+		SchedulingModel getModelFromExcel(string path);
 	}
 }

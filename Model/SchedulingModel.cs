@@ -7,11 +7,11 @@ using mvc_pattern.Model.Entity;
 
 namespace mvc_pattern.Model
 {
-	public class SchedulingModel
+	class SchedulingModel
 	{
-		List<Furnace> furnaces;
-		List<Product> products;
-		List<Order> orders;
+		public List<Furnace> furnaces;
+		public List<Product> products;
+		public List<Order> orders;
 
 		public SchedulingModel()
 		{
