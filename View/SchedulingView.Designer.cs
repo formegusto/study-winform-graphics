@@ -32,6 +32,7 @@
 			this.listView1 = new System.Windows.Forms.ListView();
 			this.listView2 = new System.Windows.Forms.ListView();
 			this.listView3 = new System.Windows.Forms.ListView();
+			this.ExcelLoadButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// TitleLabel
@@ -71,10 +72,25 @@
 			this.listView3.TabIndex = 3;
 			this.listView3.UseCompatibleStateImageBehavior = false;
 			// 
+			// ExcelLoadButton
+			// 
+			this.ExcelLoadButton.BackColor = System.Drawing.SystemColors.Control;
+			this.ExcelLoadButton.Cursor = System.Windows.Forms.Cursors.Default;
+			this.ExcelLoadButton.Font = new System.Drawing.Font("나눔고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.ExcelLoadButton.ForeColor = System.Drawing.Color.Black;
+			this.ExcelLoadButton.Location = new System.Drawing.Point(117, 4);
+			this.ExcelLoadButton.Name = "ExcelLoadButton";
+			this.ExcelLoadButton.Size = new System.Drawing.Size(188, 39);
+			this.ExcelLoadButton.TabIndex = 4;
+			this.ExcelLoadButton.Text = "파일불러오기";
+			this.ExcelLoadButton.UseVisualStyleBackColor = false;
+			this.ExcelLoadButton.Click += new System.EventHandler(this.ExcelLoadButton_Click);
+			// 
 			// SchedulingView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.ExcelLoadButton);
 			this.Controls.Add(this.listView3);
 			this.Controls.Add(this.listView2);
 			this.Controls.Add(this.listView1);
@@ -92,5 +108,6 @@
 		private System.Windows.Forms.ListView listView1;
 		private System.Windows.Forms.ListView listView2;
 		private System.Windows.Forms.ListView listView3;
+		private System.Windows.Forms.Button ExcelLoadButton;
 	}
 }
