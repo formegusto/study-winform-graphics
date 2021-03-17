@@ -12,12 +12,21 @@ namespace mvc_pattern.Model
 		public List<Furnace> furnaces;
 		public List<Product> products;
 		public List<Order> orders;
+		public Genetic genetic;
+		public List<Chromosome> elites;
+		public List<Chromosome> chromosomes;
 
 		public SchedulingModel()
 		{
 			this.furnaces = new List<Furnace>();
 			this.products = new List<Product>();
 			this.orders = new List<Order>();
+			this.chromosomes = new List<Chromosome>();
+		}
+
+		public void setGenetic()
+		{
+			this.genetic = new Genetic(this, 500, 25, 0.05);
 		}
 	}
 }

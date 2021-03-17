@@ -33,6 +33,21 @@ namespace mvc_pattern.Model.Entity
 			this.holdingKw = int.Parse(strArr[7]);
 			this.workingKw = int.Parse(strArr[8]);
 		}
+
+		public Furnace(Furnace f)
+		{
+			this.name = f.name;
+			this.material = f.material;
+			this.volume = f.volume;
+			this.restVolume = f.restVolume;
+			this.previousWorkTime = f.previousWorkTime;
+			this.meltingTime = f.meltingTime;
+			this.holdingTime = f.holdingTime;
+			this.holdingKw = f.holdingKw;
+			this.workingKw = f.workingKw;
+			this.furnaceScheduling = new FurnaceScheduling(f.furnaceScheduling);
+		}
+
 		public string[] toStringArray()
 		{
 			return new string[] {
@@ -66,11 +81,33 @@ namespace mvc_pattern.Model.Entity
 	{
 		public List<Product> ableLot;
 		public List<Order> ableOrder;
+		public List<int> orderBak;
+		public int productionVolume;
 
 		public FurnaceScheduling(List<Product> ableLot, List<Order> ableOrder)
 		{
 			this.ableLot = ableLot;
 			this.ableOrder = ableOrder;
+			this.orderBak = new List<int>();
+			this.productionVolume = 0;
+		}
+
+		public FurnaceScheduling(FurnaceScheduling f)
+		{
+			this.ableLot = f.ableLot;
+			this.ableOrder = f.ableOrder;
+			this.orderBak = new List<int>();
+			this.productionVolume = 0;
+		}
+
+		public void setOrderBak(int orderIdx, bool isClear = false)
+		{
+			if (isClear) { 
+				orderBak.Clear();
+				return;
+			}
+
+			orderBak.Add(orderIdx);
 		}
 	}
 }

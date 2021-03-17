@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
@@ -115,6 +116,28 @@ namespace mvc_pattern.Service.Scheduling
 
 			foreach (Product product in rtnModel.products)
 				product.setSchedulingData(rtnModel.orders.Find(order => order.name == product.name));
+
+			// 스케줄링 스타트
+			Console.WriteLine("제네틱 데이터 설정");
+			rtnModel.setGenetic();
+
+			// 첫 세대 만들어보자
+			for(int c = 0; c < 500; c++)
+				rtnModel.chromosomes.Add(new Chromosome(rtnModel));
+
+			// 여기까지 하면 500개의 염색체가 만들어졌을거다.
+			// 이제 각자의 비용을 계산하면 되는 것
+			foreach (Chromosome chromosome in rtnModel.chromosomes)
+				chromosome.calcFit(rtnModel);
+
+			rtnModel.chromosomes = rtnModel.chromosomes.OrderBy(ch => ch.useFit).ToList();
+
+			for(int c = 0; c < 25; c++)
+			{
+				rtnModel.chromosomes[c].print(rtnModel);
+				Console.WriteLine("==============================");
+				Thread.Sleep(500);
+			}
 
 			return rtnModel;
 		}
