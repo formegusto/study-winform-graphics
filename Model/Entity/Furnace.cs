@@ -11,13 +11,15 @@ namespace mvc_pattern.Model.Entity
 	{
 		public string name;
 		public string material;
-		public int volume;
-		public int restVolume;
-		public DateTime previousWorkTime;
-		public DateTime meltingTime;
-		public DateTime holdingTime;
+		public int volume; // or casterCapacity
+		public int restVolume; // or casterCurrentVolume
+		public DateTime previousWorkTime; // or casterScheduleStartTime
+		public DateTime minTime; // ?
+		public DateTime meltingTime; // or casterMinTime
+		public DateTime holdingTime; // or casterMoldChangeTime
 		public int holdingKw;
 		public int workingKw;
+		public FurnaceScheduling furnaceScheduling;
 
 		public Furnace(string[] strArr)
 		{
@@ -44,6 +46,31 @@ namespace mvc_pattern.Model.Entity
 				this.holdingKw.ToString(),
 				this.workingKw.ToString(),
 			};
+		}
+
+		public void setSchedulingData(SchedulingModel model)
+		{
+			List<Product> ableLot;
+			List<Order> ableOrder;
+
+			// 재료가 같은 경우 투입
+			ableLot = model.products.FindAll(product => product.material.Equals(this.material));
+			// 주문명 == 제품명
+			ableOrder = model.orders.FindAll(order => model.products.Any(product => product.name.Equals(order.name)));
+
+			this.furnaceScheduling = new FurnaceScheduling(ableLot, ableOrder);
+		}
+	}
+
+	class FurnaceScheduling
+	{
+		public List<Product> ableLot;
+		public List<Order> ableOrder;
+
+		public FurnaceScheduling(List<Product> ableLot, List<Order> ableOrder)
+		{
+			this.ableLot = ableLot;
+			this.ableOrder = ableOrder;
 		}
 	}
 }

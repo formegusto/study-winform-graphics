@@ -48,6 +48,25 @@ namespace mvc_pattern.View
 				OrdersView.Items.Add(new ListViewItem(order.toStringArray()));
 		}
 
+		public void makeSchedulingSuccess()
+		{
+			Console.WriteLine("데이터 세팅 완료");
+
+			foreach (Furnace furnace in this.controller.model.furnaces)
+			{
+				Console.Write(furnace.name + " ");
+				foreach(Product product in furnace.furnaceScheduling.ableLot)
+				{
+					Console.WriteLine(product.name);
+				}
+
+				foreach(Order order in furnace.furnaceScheduling.ableOrder)
+				{
+					Console.WriteLine(order.name);
+				}
+			}
+		}
+
 		private void ExcelLoadButton_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog ofd = new OpenFileDialog()
@@ -59,6 +78,11 @@ namespace mvc_pattern.View
 				return;
 
 			this.controller.setDataFromExcel(ofd.FileName);
+		}
+
+		private void MakeSchedulingButton_Click(object sender, EventArgs e)
+		{
+			this.controller.makeScheduling();
 		}
 	}
 }

@@ -29,5 +29,11 @@ namespace mvc_pattern.Controller
 			this.model = this.service.getModelFromExcel(path);
 			this.view.setListView();
 		}
+
+		public void makeScheduling()
+		{
+			this.model = this.service.setSchedulingData(this.model);
+			this.view.makeSchedulingSuccess();
+		}
 	}
 }

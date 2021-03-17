@@ -10,5 +10,6 @@ namespace mvc_pattern.Service.Scheduling
 	interface SchedulingService
 	{
 		SchedulingModel getModelFromExcel(string path);
+		SchedulingModel setSchedulingData(SchedulingModel model);
 	}
 }

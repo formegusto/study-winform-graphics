@@ -105,5 +105,18 @@ namespace mvc_pattern.Service.Scheduling
 
 			return rtnModel;
 		}
+
+		public SchedulingModel setSchedulingData(SchedulingModel model)
+		{
+			SchedulingModel rtnModel = model;
+
+			foreach(Furnace furnace in rtnModel.furnaces)
+				furnace.setSchedulingData(model);
+
+			foreach (Product product in rtnModel.products)
+				product.setSchedulingData(rtnModel.orders.Find(order => order.name == product.name));
+
+			return rtnModel;
+		}
 	}
 }

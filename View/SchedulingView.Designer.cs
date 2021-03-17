@@ -33,6 +33,7 @@
 			this.ProductsView = new System.Windows.Forms.ListView();
 			this.OrdersView = new System.Windows.Forms.ListView();
 			this.ExcelLoadButton = new System.Windows.Forms.Button();
+			this.MakeSchedulingButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// TitleLabel
@@ -89,10 +90,25 @@
 			this.ExcelLoadButton.UseVisualStyleBackColor = false;
 			this.ExcelLoadButton.Click += new System.EventHandler(this.ExcelLoadButton_Click);
 			// 
+			// MakeSchedulingButton
+			// 
+			this.MakeSchedulingButton.BackColor = System.Drawing.SystemColors.Control;
+			this.MakeSchedulingButton.Cursor = System.Windows.Forms.Cursors.Default;
+			this.MakeSchedulingButton.Font = new System.Drawing.Font("나눔고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+			this.MakeSchedulingButton.ForeColor = System.Drawing.Color.Black;
+			this.MakeSchedulingButton.Location = new System.Drawing.Point(311, 3);
+			this.MakeSchedulingButton.Name = "MakeSchedulingButton";
+			this.MakeSchedulingButton.Size = new System.Drawing.Size(188, 39);
+			this.MakeSchedulingButton.TabIndex = 5;
+			this.MakeSchedulingButton.Text = "스케줄러생성";
+			this.MakeSchedulingButton.UseVisualStyleBackColor = false;
+			this.MakeSchedulingButton.Click += new System.EventHandler(this.MakeSchedulingButton_Click);
+			// 
 			// SchedulingView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.MakeSchedulingButton);
 			this.Controls.Add(this.ExcelLoadButton);
 			this.Controls.Add(this.OrdersView);
 			this.Controls.Add(this.ProductsView);
@@ -112,5 +128,6 @@
 		private System.Windows.Forms.ListView ProductsView;
 		private System.Windows.Forms.ListView OrdersView;
 		private System.Windows.Forms.Button ExcelLoadButton;
+		private System.Windows.Forms.Button MakeSchedulingButton;
 	}
 }

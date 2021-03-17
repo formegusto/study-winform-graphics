@@ -13,6 +13,7 @@ namespace mvc_pattern.Model.Entity
 		public int workingVolume;
 		public DateTime workingTime;
 		public int defectRate;
+		public ProductScheduling productScheduling;
 
 		public Product(string[] strArr)
 		{
@@ -31,6 +32,21 @@ namespace mvc_pattern.Model.Entity
 				this.workingTime.ToString(),
 				this.defectRate.ToString(),
 			};
+		}
+
+		public void setSchedulingData(Order order)
+		{
+			this.productScheduling = new ProductScheduling(order.quantity + (order.quantity * this.defectRate));
+		}
+	}
+
+	class ProductScheduling
+	{
+		public int requiredQuantity;
+
+		public ProductScheduling(int requiredQuantity)
+		{
+			this.requiredQuantity = requiredQuantity;
 		}
 	}
 }
