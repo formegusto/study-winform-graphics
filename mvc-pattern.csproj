@@ -52,6 +52,7 @@
     <Compile Include="Controller\SchedulingController.cs" />
     <Compile Include="Model\Entity\Chromosome.cs" />
     <Compile Include="Model\Entity\Genetic.cs" />
+    <Compile Include="Model\Entity\Roulette.cs" />
     <Compile Include="Model\SchedulingModel.cs" />
     <Compile Include="Service\Scheduling\SchedulingService.cs" />
     <Compile Include="Service\Scheduling\SchedulingServiceImpl.cs" />

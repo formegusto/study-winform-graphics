@@ -15,6 +15,7 @@ namespace mvc_pattern.Model
 		public Genetic genetic;
 		public List<Chromosome> elites;
 		public List<Chromosome> chromosomes;
+		public Roulette roulette;
 
 		public SchedulingModel()
 		{
@@ -27,6 +28,11 @@ namespace mvc_pattern.Model
 		public void setGenetic()
 		{
 			this.genetic = new Genetic(this, 500, 25, 0.05);
+		}
+
+		public void setRoulette()
+		{
+			this.roulette = new Roulette(this.chromosomes);
 		}
 	}
 }

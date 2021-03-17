@@ -125,19 +125,60 @@ namespace mvc_pattern.Service.Scheduling
 			for(int c = 0; c < 500; c++)
 				rtnModel.chromosomes.Add(new Chromosome(rtnModel));
 
-			// 여기까지 하면 500개의 염색체가 만들어졌을거다.
-			// 이제 각자의 비용을 계산하면 되는 것
-			foreach (Chromosome chromosome in rtnModel.chromosomes)
-				chromosome.calcFit(rtnModel);
-
-			rtnModel.chromosomes = rtnModel.chromosomes.OrderBy(ch => ch.useFit).ToList();
-
-			for(int c = 0; c < 25; c++)
+			int generation = 500;
+			do
 			{
-				rtnModel.chromosomes[c].print(rtnModel);
-				Console.WriteLine("==============================");
-				Thread.Sleep(500);
-			}
+				generation--;
+				if (generation == -1)
+					break;
+				Console.WriteLine(500 - generation + "번째 세대 계산 시작");
+				// 여기까지 하면 500개의 염색체가 만들어졌을거다.
+				// 이제 각자의 비용을 계산하면 되는 것
+				foreach (Chromosome chromosome in rtnModel.chromosomes)
+					chromosome.calcFit(rtnModel);
+
+				// 정렬 조지고,
+				rtnModel.chromosomes = rtnModel.chromosomes.OrderBy(ch => ch.useFit).ToList();
+
+				// 엘리트 비율만큼 때내고,
+				List<Chromosome> newGenerations = rtnModel.chromosomes.GroupBy(ch => ch.useFit).Select(grp => grp.First()).ToList().GetRange(0, 25);
+				newGenerations[0].print(rtnModel);
+
+				foreach (Chromosome ch in newGenerations)
+				{
+					ch.useFit = 0;
+				}
+				
+				// 룰렛 돌리고,
+				rtnModel.setRoulette();
+				
+				for (int c = 0; c < 450 ; c++)
+				{
+					// 인덱스 골라오고,
+					List<int> selectChIdx = rtnModel.roulette.spinWheel();
+					Chromosome newChromo = rtnModel.chromosomes[selectChIdx[0]].Evolution(rtnModel.chromosomes[selectChIdx[1]]);
+
+					Random rand = new Random(DateTime.Now.Millisecond);
+					if(rand.NextDouble() > 0.4)
+					{
+						newChromo.Mutation(rtnModel);
+					}
+					newGenerations.Add(newChromo);
+				}
+				Console.WriteLine(newGenerations.Count + " 새로운 세대가 시작됩니다.");
+
+				for (int c = 0; c < 25; c++)
+				{
+					// 인덱스 골라오고,
+					newGenerations.Add(new Chromosome(rtnModel));
+				}
+
+
+				
+
+				Console.WriteLine(newGenerations.Count + " 새로운 세대가 시작됩니다.");
+				rtnModel.chromosomes = newGenerations;
+			} while (true);
 
 			return rtnModel;
 		}

@@ -23,6 +23,11 @@ namespace mvc_pattern.Model.Entity
 		public int useFit;
 		public List<Gene> genes;
 
+		public Chromosome(List<Gene> genes)
+		{
+			this.genes = genes;
+		}
+
 		public Chromosome(SchedulingModel model)
 		{
 			int furnaceIdx;
@@ -106,13 +111,68 @@ namespace mvc_pattern.Model.Entity
 			
 			foreach (Product p in products)
 			{
-				useFit += (p.productScheduling.requiredQuantity < 0) ? p.productScheduling.requiredQuantity * (-1) : p.productScheduling.requiredQuantity;
+				useFit += (p.productScheduling.requiredQuantity == 0) ?
+					-5
+					:
+					(p.productScheduling.requiredQuantity < 0) ?
+					p.productScheduling.requiredQuantity * (-1) : p.productScheduling.requiredQuantity;
 				//Console.WriteLine(p.name + " : 목표 수량 - " + p.productScheduling.quantity +", 남은 수량 - " + p.productScheduling.requiredQuantity);
 			}
 			/*
 			// Console.WriteLine("====================");
 			Thread.Sleep(500);
 			*/
+		}
+
+		public Chromosome Evolution(Chromosome other)
+		{
+			List<Gene> genes = new List<Gene>();
+
+			Random rand = new Random(DateTime.Now.Millisecond);
+			int parent = rand.Next(0, 2);
+			int cutPoint = rand.Next(0, this.genes.Count);
+
+			for (int g = 0; g < cutPoint; g++)
+			{
+				genes.Add(new Gene(
+					parent == 1 ? 
+						this.genes[g].furnaceIdx : other.genes[g].furnaceIdx
+					, 
+					parent == 1 ?
+						this.genes[g].orderIdx : other.genes[g].orderIdx));
+			}
+			for (int g = cutPoint; g < this.genes.Count; g++)
+			{
+				genes.Add(new Gene(
+					parent == 0 ?
+						this.genes[g].furnaceIdx : other.genes[g].furnaceIdx
+					,
+					parent == 0 ?
+						this.genes[g].orderIdx : other.genes[g].orderIdx));
+			}
+
+
+			return new Chromosome(genes);
+		}
+
+		public void Mutation(SchedulingModel model)
+		{
+
+			List<Furnace> furnaces = model.furnaces;
+			for (int g = 0; g < 10; g++)
+			{
+				Random rand = new Random(DateTime.Now.Millisecond);
+				int mutationIdx = rand.Next(0, this.genes.Count);
+
+				// 용해로를 우선 랜덤하게 뽑고,
+				int furnaceIdx = rand.Next(0, furnaces.Count);
+
+				// 뽑힌 용해로가 만들 수 있는 제품 Idx를 뽑는다.
+				int orderIdx = rand.Next(0, furnaces[furnaceIdx].furnaceScheduling.ableOrder.Count);
+
+				this.genes[mutationIdx].furnaceIdx = furnaceIdx;
+				this.genes[mutationIdx].orderIdx = orderIdx;
+			}
 		}
 
 		public void print(SchedulingModel model)
@@ -176,8 +236,6 @@ namespace mvc_pattern.Model.Entity
 			{
 				Console.WriteLine("[" + this.useFit + "]" + p.name + " : 목표 수량 - " + p.productScheduling.quantity + ", 남은 수량 - " + p.productScheduling.requiredQuantity);
 			}
-
-
 		}
 	}
 }
